@@ -17,6 +17,10 @@ const links = [
     Link: "/playground/fm-play",
     Text: "fm-play",
   },
+  {
+    Link: "/playground/db-play",
+    Text: "db-play",
+  },
 ];
 
 export default function PlaygroundLayout({
@@ -26,9 +30,13 @@ export default function PlaygroundLayout({
 }>) {
   return (
     <main>
-      <div className="absolute left-[50%] top-5 z-[1] flex -translate-x-[50%] gap-2">
+      <div className="absolute left-[50%] top-5 z-[1] flex max-w-fit -translate-x-[50%] gap-2 whitespace-nowrap">
         {links.map((link) => {
-          return <Link href={link.Link}>{link.Text}</Link>;
+          return (
+            <Link key={link.Text} href={link.Link}>
+              {link.Text}
+            </Link>
+          );
         })}
       </div>
       {children}

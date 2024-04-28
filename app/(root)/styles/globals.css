@@ -12,6 +12,11 @@
   border: red solid 2px;
 }
 
+.text-wrap-20ch {
+  max-width: 12em; /* Roughly 20 characters, assuming the average width of 0.6em per character */
+  overflow-wrap: break-word;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

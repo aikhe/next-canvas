@@ -6,7 +6,7 @@ export default function DeletePostButton({ cutieId }: { cutieId: any }) {
 
   async function deleteCutie() {
     try {
-      await fetch(`/api/cutie/${cutieId}`, {
+      await fetch(`/api/cuties?id=${cutieId}`, {
         method: "DELETE",
       });
       router.refresh();
@@ -15,5 +15,5 @@ export default function DeletePostButton({ cutieId }: { cutieId: any }) {
     }
   }
 
-  return <button onClick={deleteCutie}>Delete Cutie</button>;
+  return <button onClick={deleteCutie}>Delete</button>;
 }

@@ -18,29 +18,29 @@ export default function EditCutie({ id, name }: { id: any; name: any }) {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ name: newName }),
+        body: JSON.stringify({ newName }),
       });
 
       if (!res.ok) {
         throw new Error("Failed to update topic");
       }
 
+      router.push("/playground/db-play");
       router.refresh();
-      router.push("/");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form className="flex flex-col" onSubmit={handleSubmit}>
+      <Input
         onChange={(e) => setNewName(e.target.value)}
         value={newName}
         type="text"
         placeholder="hjkl"
       />
-      <button className="float-end my-2">Save</button>
+      <Button className="float-end my-2">Save</Button>
     </form>
   );
 }

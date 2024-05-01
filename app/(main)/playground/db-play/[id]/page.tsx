@@ -1,20 +1,16 @@
 import EditCutie from "@/components/edit-cutie";
 import { db } from "@/lib/db";
+import axios from "axios";
 
 const getCutie = async (id: any) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/cuties/${id}`, {
-      method: "GET",
-      cache: "no-store",
-    });
+    const { data } = await axios.get(`http://localhost:3000/api/cuties/${id}`);
 
-    if (!res.ok) {
+    if (!data) {
       throw new Error("Failed to fetch cutie");
     }
 
-    const name = await res.json();
-    // console.log(name.cutie);
-    return name.cutie;
+    return data.cutie;
   } catch (error) {
     console.log(error);
   }

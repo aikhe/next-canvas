@@ -55,6 +55,8 @@ export default function AddCutie() {
                 <FormControl>
                   <Input {...field} placeholder="Cutie Name" />
                 </FormControl>
+                <FormDescription>Name a cutie&lt;3</FormDescription>
+                <FormMessage />
               </FormItem>
             )}
           />

@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function DeletePostButton({ cutieId }: { cutieId: any }) {
@@ -6,9 +7,7 @@ export default function DeletePostButton({ cutieId }: { cutieId: any }) {
 
   async function deleteCutie() {
     try {
-      await fetch(`/api/cuties?id=${cutieId}`, {
-        method: "DELETE",
-      });
+      await axios.delete(`/api/cuties?id=${cutieId}`);
       router.refresh();
     } catch (error) {
       console.error(error);

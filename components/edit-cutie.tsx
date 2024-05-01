@@ -3,25 +3,21 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import axios from "axios";
 
 export default function EditCutie({ id, name }: { id: any; name: any }) {
   const [newName, setNewName] = useState(name);
-
   const router = useRouter();
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/api/cuties/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ newName }),
+      const response = await axios.put(`/api/cuties/${id}`, {
+        name: newName,
       });
 
-      if (!res.ok) {
+      if (!response) {
         throw new Error("Failed to update topic");
       }
 
@@ -33,14 +29,15 @@ export default function EditCutie({ id, name }: { id: any; name: any }) {
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit}>
-      <Input
-        onChange={(e) => setNewName(e.target.value)}
-        value={newName}
-        type="text"
-        placeholder="hjkl"
-      />
-      <Button className="float-end my-2">Save</Button>
-    </form>
+    <>
+      <form onSubmit={onSubmit}>
+        <Input
+          onChange={(e) => setNewName(e.target.value)}
+          value={newName}
+          placeholder="Cutie Name"
+        />
+        <Button className="float-end my-2">Save</Button>
+      </form>
+    </>
   );
 }

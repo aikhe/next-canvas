@@ -11,8 +11,8 @@ export default function AddData() {
 
   return (
     <>
-      <div className="w-full justify-between flex items-center">
-        <h1 className=" font-black text-lg md:text-2xl flex items-center gap-1">
+      <div className="flex w-full items-center justify-between">
+        <h1 className=" flex items-center gap-1 text-lg font-black md:text-2xl">
           CRUD prototype
           <PencilLine className="size-5 md:size-6" />
         </h1>

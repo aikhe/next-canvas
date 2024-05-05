@@ -5,7 +5,7 @@
 - [x] Root page
 - [x] Routing & playground page
 - [x] db-play page
-- [ ] UI (Incrementing, deleting, editing)
+- [x] UI (Incrementing, deleting, editing)
 - [ ] Prisma
 - [ ] Database (Supabase)
 - [ ] Api

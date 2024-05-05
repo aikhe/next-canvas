@@ -19,7 +19,10 @@ import { useRouter } from "next/navigation";
 import { Check } from "lucide-react";
 
 interface DataFormProps {
-  toggleModal: () => void;
+  toggleModal?: () => void;
+  onPage?: boolean;
+  name?: string;
+  description?: string;
 }
 
 const formSchema = z.object({
@@ -34,22 +37,28 @@ const formSchema = z.object({
   }),
 });
 
-const DataForm: React.FC<DataFormProps> = ({ toggleModal }) => {
+const DataForm: React.FC<DataFormProps> = ({
+  toggleModal,
+  onPage,
+  name,
+  description,
+}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      description: "",
+      name: name || "",
+      description: description || "",
     },
   });
 
   const router = useRouter();
+
   const handleSumbit = (values: z.infer<typeof formSchema>) => {
     form.reset();
-    toggleModal();
+    toggleModal?.();
     console.log({ values });
     // router.refresh();
-    // router.push("/playground/db-play");
+    !onPage && router.push("/playground/db-play");
   };
 
   return (

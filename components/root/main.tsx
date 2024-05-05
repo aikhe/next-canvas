@@ -12,7 +12,7 @@ import { ArrowRight } from "lucide-react";
 export default function Main() {
   return (
     <section>
-      <Card className="w-[100%]">
+      <Card className="w-[100%] mb-2">
         <CardHeader>
           <CardTitle>Next-setup</CardTitle>
           <CardDescription>
@@ -23,9 +23,6 @@ export default function Main() {
       </Card>
       <div className="mx-auto flex w-[100%] gap-2">
         <ModeToggle />
-        {/* <Link href={"/"} className={buttonVariants({ variant: "fill" })}>
-          Click here
-        </Link> */}
         <Link
           className={buttonVariants({ variant: "fill" })}
           href="/playground"

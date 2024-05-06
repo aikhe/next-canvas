@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormLabel,
   FormItem,
@@ -21,9 +20,10 @@ import axios from "axios";
 
 interface DataFormProps {
   toggleModal?: () => void;
-  onPage?: boolean;
   name?: string;
   description?: string;
+  request: string;
+  id?: string;
 }
 
 const formSchema = z.object({
@@ -40,9 +40,10 @@ const formSchema = z.object({
 
 const DataForm: React.FC<DataFormProps> = ({
   toggleModal,
-  onPage,
   name,
   description,
+  request,
+  id,
 }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -55,12 +56,15 @@ const DataForm: React.FC<DataFormProps> = ({
   const router = useRouter();
 
   const handleSumbit = async (values: z.infer<typeof formSchema>) => {
-    form.reset();
-    toggleModal?.();
-    await axios.post(`/api/data`, values);
-    console.log({ values });
-    !onPage && router.push("/playground/db-play");
+    if (request === "POST") {
+      await axios.post(`/api/data`, values);
+      toggleModal?.();
+    } else if (request === "PUT") {
+      await axios.put(`/api/data/${id}`, values);
+      router.push("/playground/db-play");
+    }
     router.refresh();
+    console.log({ values });
   };
 
   return (

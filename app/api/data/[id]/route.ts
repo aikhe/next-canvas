@@ -1,7 +1,6 @@
 import prisma from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
 export async function GET(
   req: Request,
   { params }: { params: { id: string } },
@@ -15,7 +14,7 @@ export async function GET(
       },
     });
 
-    console.log(data);
+    // console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.log(error);

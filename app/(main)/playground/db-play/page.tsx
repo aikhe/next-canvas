@@ -4,15 +4,13 @@ import { DataItem } from "@/types/data";
 import axios from "axios";
 
 export const dynamic = "force-dynamic";
+
 const getData = async (): Promise<DataItem[] | null> => {
   try {
-    const res = await axios.get(`${process.env.WEBSITE_URL}/api/data`, {
-      method: "GET",
-    });
+    const res = await axios.get(`${process.env.WEBSITE_URL}/api/data`);
 
     if (res) {
       const data = res.data;
-      // console.log(res.data);
       return data;
     }
   } catch (error) {
@@ -28,12 +26,13 @@ export default async function page() {
     <section>
       <div className="mx-auto mt-32 flex max-w-fit flex-col items-center overflow-hidden">
         <AddData />
-        <div className="mt-2 grid items-center justify-center gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-32 mt-2 grid items-start justify-center gap-2 md:grid-cols-2 lg:grid-cols-3">
           {data &&
             data.map((data, i) => {
               return (
                 <DataCard
                   key={i}
+                  dataId={data.id}
                   dataName={data.name}
                   dataDescription={data.description}
                 />

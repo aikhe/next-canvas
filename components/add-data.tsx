@@ -30,7 +30,7 @@ export default function AddData() {
             toggleModal(!modal);
           }}
         >
-          <DataForm toggleModal={() => toggleModal(!modal)} />
+          <DataForm toggleModal={() => toggleModal(!modal)} request="POST" />
         </Backdrop>
       )}
     </>

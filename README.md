@@ -9,5 +9,5 @@
 - [x] Prisma
 - [x] Database (Supabase)
 - [x] Api
-- [ ] Connect UI to backend
-- [ ] Vercel
+- [x] Connect UI to backend
+- [x] Vercel

@@ -2,15 +2,17 @@ import AddData from "@/components/add-data";
 import DataCard from "@/components/data-card";
 import prisma from "@/lib/prismadb";
 import { DataItem } from "@/types/data";
+import axios from "axios";
 
 const getData = async (): Promise<DataItem[] | null> => {
   try {
-    const res = await fetch(`${process.env.WEBSITE_URL}/api/data`, {
+    const res = await axios.get(`${process.env.WEBSITE_URL}/api/data`, {
       method: "GET",
     });
 
-    if (res.ok) {
-      const data = await res.json();
+    if (res) {
+      const data = res.data;
+      // console.log(res.data);
       return data;
     }
   } catch (error) {
@@ -19,14 +21,8 @@ const getData = async (): Promise<DataItem[] | null> => {
   return null;
 };
 
-const getTest = async () => {
-  const test = await prisma.data.findMany();
-  console.log(test);
-  return test;
-};
-
 export default async function page() {
-  const data = await getTest();
+  const data = await getData();
 
   return (
     <section>

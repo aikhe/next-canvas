@@ -1,9 +1,9 @@
 import AddData from "@/components/add-data";
 import DataCard from "@/components/data-card";
-import prisma from "@/lib/prismadb";
 import { DataItem } from "@/types/data";
 import axios from "axios";
 
+export const dynamic = "force-dynamic";
 const getData = async (): Promise<DataItem[] | null> => {
   try {
     const res = await axios.get(`${process.env.WEBSITE_URL}/api/data`, {

@@ -17,6 +17,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useRouter } from "next/navigation";
 import { Check } from "lucide-react";
+import axios from "axios";
 
 interface DataFormProps {
   toggleModal?: () => void;
@@ -53,12 +54,13 @@ const DataForm: React.FC<DataFormProps> = ({
 
   const router = useRouter();
 
-  const handleSumbit = (values: z.infer<typeof formSchema>) => {
+  const handleSumbit = async (values: z.infer<typeof formSchema>) => {
     form.reset();
     toggleModal?.();
+    await axios.post(`/api/data`, values);
     console.log({ values });
-    // router.refresh();
     !onPage && router.push("/playground/db-play");
+    router.refresh();
   };
 
   return (

@@ -6,7 +6,8 @@
 - [x] Routing & playground page
 - [x] db-play page
 - [x] UI (Incrementing, deleting, editing)
-- [ ] Prisma
-- [ ] Database (Supabase)
-- [ ] Api
+- [x] Prisma
+- [x] Database (Supabase)
+- [x] Api
 - [ ] Connect UI to backend
+- [ ] Vercel

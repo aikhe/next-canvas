@@ -11,3 +11,5 @@
 - [x] Api
 - [x] Connect UI to backend
 - [x] Vercel
+
+- [ ] Gitignore (.env)

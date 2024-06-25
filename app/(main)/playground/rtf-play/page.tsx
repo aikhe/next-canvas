@@ -6,17 +6,18 @@ import { OrbitControls } from "@react-three/drei";
 import { Mesh } from "three";
 
 export default function layout() {
-  const viewportWidth =
-    window.innerWidth || document.documentElement.clientWidth;
-
   const [cubeGeometry, setCubeGeometry] = useState<[number, number, number]>(
     () => {
+      const viewportWidth =
+        window.innerWidth || document.documentElement.clientWidth;
       return viewportWidth >= 1024 ? [2.5, 2.5, 2.5] : [1, 2, 2];
     },
   );
 
   useEffect(() => {
     const handleResize = () => {
+      const viewportWidth =
+        window.innerWidth || document.documentElement.clientWidth;
       const newGeometry: [number, number, number] =
         viewportWidth >= 1024 ? [2.5, 2.5, 2.5] : [1, 2, 2];
       setCubeGeometry(newGeometry);

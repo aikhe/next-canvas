@@ -5,21 +5,29 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Mesh } from "three";
 
+type CubeTypes = [number, number, number];
+
 export default function layout() {
-  const [cubeGeometry, setCubeGeometry] = useState<[number, number, number]>(
-    () => {
-      const viewportWidth =
-        window.innerWidth || document.documentElement.clientWidth;
-      return viewportWidth >= 1024 ? [2.5, 2.5, 2.5] : [1, 2, 2];
-    },
-  );
+  const matrices: { [key: string]: CubeTypes } = {
+    default: [1, 2, 2],
+    larger: [2.5, 2.5, 2.5],
+  };
+
+  const [cubeGeometry, setCubeGeometry] = useState<CubeTypes>(matrices.default);
 
   useEffect(() => {
+    const viewportWidth =
+      window.innerWidth || document.documentElement.clientWidth;
+
+    const initialGeometry: CubeTypes =
+      viewportWidth >= 1024 ? matrices.larger : matrices.default;
+    setCubeGeometry(initialGeometry);
+
     const handleResize = () => {
       const viewportWidth =
         window.innerWidth || document.documentElement.clientWidth;
-      const newGeometry: [number, number, number] =
-        viewportWidth >= 1024 ? [2.5, 2.5, 2.5] : [1, 2, 2];
+      const newGeometry: CubeTypes =
+        viewportWidth >= 1024 ? matrices.larger : matrices.default;
       setCubeGeometry(newGeometry);
     };
 
@@ -43,7 +51,7 @@ export default function layout() {
 }
 
 interface CubeProps {
-  cubeGeometry: [number, number, number];
+  cubeGeometry: CubeTypes;
 }
 
 function Cube({ cubeGeometry }: CubeProps) {

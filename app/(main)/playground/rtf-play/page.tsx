@@ -7,7 +7,7 @@ import { Mesh } from "three";
 
 type CubeTypes = [number, number, number];
 
-export default function layout() {
+export default function Layout() {
   const matrices: { [key: string]: CubeTypes } = {
     default: [1, 2, 2],
     larger: [2.5, 2.5, 2.5],

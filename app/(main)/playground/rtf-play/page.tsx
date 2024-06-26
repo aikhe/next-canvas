@@ -28,9 +28,19 @@ function Cube() {
     }
   });
 
+  const viewportWidth =
+    window.innerWidth || document.documentElement.clientWidth;
+
+  console.log(`Viewport width: ${viewportWidth}px`);
+
+  const cubeGeometry: [number, number, number] =
+    viewportWidth >= 1569 ? [2.5, 2.5, 2.5] : [1, 2, 2];
+
+  console.log(cubeGeometry);
+
   return (
     <mesh ref={mesh}>
-      <boxGeometry args={[1, 2, 2]} />
+      <boxGeometry args={cubeGeometry} />
       <meshStandardMaterial color={"white"} />
     </mesh>
   );

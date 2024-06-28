@@ -5,7 +5,7 @@ export default function Playground() {
   return (
     <div className="flex h-[100svh] items-center justify-center">
       <motion.div
-        className="size-[10rem] bg-zinc-300"
+        className="sm:[8rem] size-[10rem] bg-zinc-300"
         animate={{
           scale: [1, 2, 2, 1, 1],
           rotate: [0, 0, 270, 270, 0],

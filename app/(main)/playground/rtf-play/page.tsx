@@ -6,7 +6,7 @@ import { Mesh } from "three";
 
 export default function layout() {
   return (
-    <div className="h-[100vh]">
+    <div className="h-[100svh]">
       <Canvas>
         <OrbitControls enableZoom={false} enablePan={false} />
         <ambientLight intensity={1} />
@@ -30,7 +30,7 @@ function Cube() {
 
   return (
     <mesh ref={mesh}>
-      <boxGeometry args={[2.5, 2.5, 2.5]} />
+      <boxGeometry args={[1, 2, 2]} />
       <meshStandardMaterial color={"white"} />
     </mesh>
   );

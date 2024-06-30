@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Playground() {
   return (
-    <div className="flex h-[100vh] items-center justify-center">
+    <div className="flex h-[100svh] items-center justify-center">
       <motion.div
         className="size-[10rem] bg-zinc-300"
         animate={{

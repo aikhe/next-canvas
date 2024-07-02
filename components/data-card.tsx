@@ -12,17 +12,14 @@ import RemoveData from "./remove-data";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "./ui/button";
-
-interface DataCardProps {
-  dataId: string;
-  dataName: string;
-  dataDescription: string;
-}
+import { DataCardProps } from "@/types/data";
 
 const DataCard: React.FC<DataCardProps> = ({
   dataId,
   dataName,
   dataDescription,
+  dataCreatedDate,
+  dataUpdatedDate,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -35,6 +32,10 @@ const DataCard: React.FC<DataCardProps> = ({
         >
           {dataDescription}
         </CardDescription>
+        <p className="text-sm">
+          Created: {dataCreatedDate} <br />
+          Updated: {dataUpdatedDate}
+        </p>
       </CardHeader>
       <CardFooter className="flex justify-between pb-4">
         {dataDescription.length >= 118 ? (

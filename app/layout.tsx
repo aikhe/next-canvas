@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "hjkl",
-  description: "The only Next-js template that will suite my need",
+  title: "ikeandrie",
+  description: "The only Nextjs template that will suite my need",
 };
 
 export default function RootLayout({

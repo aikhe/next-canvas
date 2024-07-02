@@ -12,4 +12,9 @@
 - [x] Connect UI to backend
 - [x] Vercel
 
+- [x] Added dates
+  - [ ] Fix format
+  - [ ] Clean code
+- [ ]
+
 - [ ] Gitignore (.env)

@@ -18,7 +18,6 @@ const getData = async (id: string): Promise<DataItem | null> => {
 
 export default async function page({ params }: { params: { id: string } }) {
   const data = await getData(params.id);
-  // console.log(data);
 
   return (
     <div className="absolute grid h-full w-full items-center justify-center">

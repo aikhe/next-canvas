@@ -29,33 +29,14 @@ export default async function page() {
         <div className="mb-32 mt-2 grid items-start justify-center gap-2 md:grid-cols-2 lg:grid-cols-3">
           {data &&
             data.map((data, i) => {
-              const options: Intl.DateTimeFormatOptions = {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZone: "Asia/Manila",
-                hour12: false,
-              };
-
-              const formattedCreatedAt = new Date(
-                data.createdAt,
-              ).toLocaleDateString("en-PH", options);
-              const formattedUpdatedAt = new Date(
-                data.updatedAt,
-              ).toLocaleTimeString("en-PH", options);
-
-              // console.log(formattedCreatedAt);
-
               return (
                 <DataCard
                   key={i}
                   dataId={data.id}
                   dataName={data.name}
                   dataDescription={data.description}
-                  dataCreatedDate={formattedCreatedAt}
-                  dataUpdatedDate={formattedUpdatedAt}
+                  dataCreatedDate={String(data.createdAt)}
+                  dataUpdatedDate={String(data.updatedAt)}
                 />
               );
             })}

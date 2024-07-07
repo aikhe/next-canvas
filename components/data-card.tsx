@@ -23,6 +23,20 @@ const DataCard: React.FC<DataCardProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  function formatDate(dateString: string) {
+    const GMT8_OFFSET = 8 * 60 * 60 * 1000;
+    const date = new Date(dateString);
+    const gmt8Date = new Date(date.getTime() + GMT8_OFFSET);
+
+    const year = gmt8Date.getUTCFullYear();
+    const day = String(gmt8Date.getUTCDate()).padStart(2, "0");
+    const hours = String(gmt8Date.getUTCHours()).padStart(2, "0");
+    const minutes = String(gmt8Date.getUTCMinutes()).padStart(2, "0");
+
+    return `${new Intl.DateTimeFormat("en-PH", { month: "long" }).format(gmt8Date)}
+    ${day}, ${year} ${hours === "00" ? `00:${minutes}` : `${hours}:${minutes}`}`;
+  }
+
   return (
     <Card className="w-80">
       <CardHeader className="pb-3">
@@ -32,9 +46,9 @@ const DataCard: React.FC<DataCardProps> = ({
         >
           {dataDescription}
         </CardDescription>
-        <p className="text-sm">
-          Created: {dataCreatedDate} <br />
-          Updated: {dataUpdatedDate}
+        <p className="text-[.8rem] opacity-80">
+          Created on {formatDate(dataCreatedDate)} <br />
+          Updated on {formatDate(dataUpdatedDate)}
         </p>
       </CardHeader>
       <CardFooter className="flex justify-between pb-4">

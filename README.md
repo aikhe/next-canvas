@@ -13,8 +13,8 @@
 - [x] Vercel
 
 - [x] Added dates
-  - [ ] Fix format
-  - [ ] Clean code
+  - [x] Fix format
+  - [x] Clean code
 - [ ]
 
 - [ ] Gitignore (.env)

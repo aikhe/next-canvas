@@ -14,7 +14,7 @@ export async function GET(
       },
     });
 
-    console.log(data);
+    // console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.log(error);
@@ -43,7 +43,7 @@ export async function PUT(
       },
     });
 
-    console.log(data);
+    // console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.log(error);
@@ -67,7 +67,7 @@ export async function DELETE(
       },
     });
 
-    console.log(data);
+    // console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.log(error);
